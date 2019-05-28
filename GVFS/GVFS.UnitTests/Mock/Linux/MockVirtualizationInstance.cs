@@ -1,6 +1,7 @@
 using GVFS.Common;
 using GVFS.Tests.Should;
 using PrjFSLib.Linux;
+using PrjFSLib.POSIX;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -57,7 +58,7 @@ namespace GVFS.UnitTests.Mock.Linux
         }
 
         public override Result WriteFileContents(
-            int fd,
+            IntPtr fileHandle,
             byte[] bytes,
             uint byteCount)
         {

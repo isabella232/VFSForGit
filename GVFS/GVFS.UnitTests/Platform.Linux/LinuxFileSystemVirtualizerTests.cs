@@ -13,6 +13,7 @@ using GVFS.Virtualization.FileSystem;
 using GVFS.Virtualization.Projection;
 using NUnit.Framework;
 using PrjFSLib.Linux;
+using PrjFSLib.POSIX;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -440,7 +441,7 @@ namespace GVFS.UnitTests.Platform.Linux
                     contentId: contentId,
                     triggeringProcessId: 2,
                     triggeringProcessName: "UnitTest",
-                    fd: 0).ShouldEqual(Result.Success);
+                    fileHandle: IntPtr.Zero).ShouldEqual(Result.Success);
 
                 mockVirtualization.BytesWritten.ShouldEqual(fileLength);
 
@@ -484,7 +485,7 @@ namespace GVFS.UnitTests.Platform.Linux
                     contentId: contentId,
                     triggeringProcessId: 2,
                     triggeringProcessName: "UnitTest",
-                    fd: 0).ShouldEqual(Result.EIOError);
+                    fileHandle: IntPtr.Zero).ShouldEqual(Result.EIOError);
 
                 fileSystemCallbacks.Stop();
             }
